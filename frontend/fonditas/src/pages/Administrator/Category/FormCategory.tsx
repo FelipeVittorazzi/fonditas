@@ -10,11 +10,11 @@ const FormCategory = () => {
                 sx={{ display: 'flex', justifyContent: 'center'}}
             >
                 <Box component="form"  sx={{width: "50%"}}>
-                    <Typography component="h1" variant="h6">Formulário de Restaurantes</Typography>
+                    <Typography component="h1" variant="h6">Formulário de Categorias</Typography>
                     <Grid sx={{marginBottom: 1}}>
                         <TextField
                             id="standard-basic"
-                            label="Restaurante"
+                            label="Categoria"
                             variant="standard"
                             fullWidth
                             required

@@ -31,5 +31,13 @@
     
             return $dishes;
         }
+    
+        public function apiDishList() {
+            $dishes = $this->dishRepository->getAllDishes();
+    
+            header('Content-Type: application/json');
+            echo json_encode($dishes);
+        }
     }
+    
 ?>
