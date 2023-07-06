@@ -1,4 +1,4 @@
-export interface IDishes {
+export interface IDish {
     id: number,
     name: string,
     price: number,

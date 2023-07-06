@@ -21,10 +21,13 @@ function App() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="admin" element={<Admin />}>
+      <Route path="dish" element={<Dishes />} />
         <Route path="dish" element={<Dishes />} />
-        <Route path="category" element={<Categorys />} />
         <Route path="dish/new" element={<FormDish />} />
+        <Route path="dish/:id" element={<FormDish />} />
+        <Route path="category" element={<Categorys />} />
         <Route path="category/new" element={<FormCategory />} />
+        <Route path="category/:id" element={<FormCategory />} />
       </Route>
       <Route path="*" element={<NoMatch />} />
     </Routes>

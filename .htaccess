@@ -2,6 +2,6 @@ RewriteEngine On
 RewriteBase /fonditas/
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ app/router.php [L]
+RewriteRule ^(.*)$ app/Controllers/api.php [L]
 RewriteRule ^ app/Controllers/api.php [QSA,L]
 
