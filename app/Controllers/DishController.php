@@ -2,6 +2,10 @@
 
 require_once ('../Repository/DishRepository.php');
 
+header("Access-Control-Allow-Origin: *"); // Ou '*' para permitir qualquer origem
+header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS'); 
+header('Access-Control-Allow-Headers: X-Requested-With, Content-Type, Origin, Authorization, Accept, Client-Security-Token, Accept-Encoding');
+
 class DishController
 {
     private $dishRepository;
@@ -34,8 +38,13 @@ class DishController
             $name = $data['name'];
             $description = $data['description'];
             $image = $data['image'];
+            $ingredients = $data['ingredients'];
+            $price = $data['price'];
+            $rating = $data['rating'];
+            $prepTime = $data['prep_time'];
+            $categoryId = $data['category_id'];
 
-            $this->dishRepository->submitNewDish($name, $description, $image);
+            $this->dishRepository->submitNewDish($name, $description, $image, $ingredients, $price, $rating, $prepTime, $categoryId);
 
             echo json_encode($data);
         }
@@ -49,8 +58,13 @@ class DishController
             $name = $data['name'];
             $description = $data['description'];
             $image = $data['image'];
+            $ingredients = $data['ingredients'];
+            $price = $data['price'];
+            $rating = $data['rating'];
+            $prepTime = $data['prep_time'];
+            $categoryId = $data['category_id'];
     
-            $this->dishRepository->submitUpdateDish($name, $description, $image, $id);
+            $this->dishRepository->submitUpdateDish($name, $description, $image, $ingredients, $price, $rating, $prepTime, $categoryId, $id);
     
             echo json_encode($data);
         }

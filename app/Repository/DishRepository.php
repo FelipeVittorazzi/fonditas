@@ -2,6 +2,10 @@
 
 require_once('../Interfaces/IDish.php');
 
+header("Access-Control-Allow-Origin: *"); // Ou '*' para permitir qualquer origem
+header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS'); 
+header('Access-Control-Allow-Headers: X-Requested-With, Content-Type, Origin, Authorization, Accept, Client-Security-Token, Accept-Encoding');
+
 class DishRepository implements DishRepositoryInterface
 {
     private $db;
@@ -29,20 +33,25 @@ class DishRepository implements DishRepositoryInterface
         return $dishes;
     }
 
-    public function submitNewDish($name, $description, $image)
+    public function submitNewDish($name, $description, $image, $ingredients, $price, $rating, $prepTime, $categoryId)
     {
-        $stmt = $this->db->prepare('INSERT INTO dishes (name, description, image) VALUES (?, ?, ?)');
-        $stmt->execute([$name, $description, $image]);
+        $stmt = $this->db->prepare('INSERT INTO dishes (name, description, image, ingredients, price, rating, prep_time, category_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)');
+        $stmt->execute([$name, $description, $image, $ingredients, $price, $rating, $prepTime, $categoryId]);
     }
 
-    public function submitUpdateDish($name, $description, $image, $id) {
+    public function submitUpdateDish($name, $description, $image, $ingredients, $price, $rating, $prepTime, $categoryId, $id) {
         $data = [
             'name' => $name,
             'description' => $description,
             'image' => $image,
+            'ingredients' => $ingredients,
+            'price' => $price,
+            'rating' => $rating,
+            'prep_time' => $prepTime,
+            'category_id' => $categoryId,
             'id' => $id
         ];
-        $sql = "UPDATE dishes SET name=:name, description=:description, image=:image WHERE id=:id";
+        $sql = "UPDATE dishes SET name=:name, description=:description, image=:image, ingredients=:ingredients, price=:price, rating=:rating, prep_time=:prep_time, category_id=:category_id WHERE id=:id";
         $stmt= $this->db->prepare($sql);
         $stmt->execute($data);
     }
